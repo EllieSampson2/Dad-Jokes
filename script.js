@@ -1,13 +1,36 @@
-async function getJoke() {
-  const response = await fetch("https://icanhazdadjoke.com/", {
-    headers: { 
-      "Accept": "application/json",
-      "User-Agent": "DadJokesApp (https://github.com/)"
-    }
-  });
+const jokeElement = document.getElementById("joke");
+const button = document.querySelector("button");
+const counterElement = document.getElementById("counter");
 
-  const data = await response.json();
-  document.getElementById("joke").innerText = data.joke;
+let jokeCount = 0;
+
+async function getJoke() {
+  try {
+    jokeElement.innerText = "Loading dad-level humor...";
+    button.disabled = true;
+
+    const response = await fetch("https://icanhazdadjoke.com/", {
+      headers: {
+        "Accept": "application/json",
+        "User-Agent": "DadBirthdayApp (github pages project)"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("API error");
+    }
+
+    const data = await response.json();
+    jokeElement.innerText = data.joke;
+
+    jokeCount++;
+    counterElement.innerText = `Dad Jokes Served: ${jokeCount}`;
+
+  } catch (error) {
+    jokeElement.innerText = "Even dads run out of jokes sometimes. Try again!";
+  } finally {
+    button.disabled = false;
+  }
 }
 
 getJoke();
