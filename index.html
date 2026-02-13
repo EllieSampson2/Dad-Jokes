@@ -2,11 +2,53 @@
 <html>
 <head>
   <title>Dad Jokes</title>
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;
+    padding: 50px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  #joke {
+    font-size: 1.5rem;
+    margin: 30px auto;
+    max-width: 600px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #ffcc00;
+    font-weight: bold;
+  }
+
+  button:hover {
+    background: #ffdd33;
+  }
+
+  #counter {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+</style>
+
 </head>
 <body>
   <h1>Happy Birthday 🎉</h1>
   <p id="joke">Loading joke...</p>
+  <p id="counter">Jokes Served: 0</p>
   <button onclick="getJoke()">New Joke</button>
+  <button onclick="shareJoke()">Share This Joke</button>
 
   <script src="script.js"></script>
 </body>
