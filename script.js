@@ -33,4 +33,17 @@ async function getJoke() {
   }
 }
 
+function shareJoke() {
+  const text = jokeElement.innerText;
+
+  if (navigator.share) {
+    navigator.share({
+      title: "Dad Joke",
+      text: text
+    });
+  } else {
+    alert("Sharing not supported on this device.");
+  }
+}
+
 getJoke();
